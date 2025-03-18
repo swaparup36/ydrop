@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String    @id @default(cuid())
+  name            String
+  email           String    @unique
+  image           String
+  followers       String[]  @default([])
+  followings       String[]  @default([])
+  airdropsCreated Airdrop[]
+}
+
+model Airdrop {
+  id                                  String   @id @default(cuid())
+  creator                             User     @relation(fields: [creatorId], references: [id])
+  isActive                            Boolean  @default(true)
+  creatorId                           String
+  coverPicture                        String
+  basedOn                             String
+  title                               String
+  description                         String
+  tokenName                           String
+  tokenMint                           String
+  tokenDecimal                        Int
+  startDate                           DateTime @default(now())
+  amount                              Float
+  channelId                           String
+  rewardLessthanOneYear               Float
+  rewardGreaterthanOneYear            Float
+  rewardGreaterthanTwoYears           Float
+  rewardGreaterthanThreeYears         Float
+  rewardGreaterthanFourYears          Float
+  rewardGreaterthanFiveYears          Float
+  totalRecipientLessthanOneYear       Int
+  totalRecipientGreaterthanOneYear    Int
+  totalRecipientGreaterthanTwoYears   Int
+  totalRecipientGreaterthanThreeYears Int
+  totalRecipientGreaterthanFourYears  Int
+  totalRecipientGreaterthanFiveYears  Int
+  recipientsLessthanOneYear           String[] @default([])
+  recipientsGreaterthanOneYear        String[] @default([])
+  recipientsGreaterthanTwoYears       String[] @default([])
+  recipientsGreaterthanThreeYears     String[] @default([])
+  recipientsGreaterthanFourYears      String[] @default([])
+  recipientsGreaterthanFiveYears      String[] @default([])
+}

@@ -1,0 +1,23 @@
+# Node modules
+
+/website/node_modules
+/verification-workers/node_modules
+/transaction-reverting-workers/node_modules
+/airdrop_notification_service/node_modules
+
+# next.js
+/website/.next/
+/website/out/
+
+# Environment variables
+/website/.env*
+/verification-workers/.env*
+/transaction-reverting-workers/.env*
+/airdrop_notification_service/.env*
+
+# vercel
+/*/.vercel
+
+# typescript
+/website/*.tsbuildinfo
+/website/next-env.d.ts

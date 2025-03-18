@@ -1,0 +1,23 @@
+{
+  "name": "yt-loyalty-worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc -b && node dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/spl-token": "^0.4.12",
+    "@solana/web3.js": "^1.98.0",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "ioredis": "^5.5.0",
+    "pg": "^8.13.3",
+    "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.11"
+  }
+}
