@@ -14,13 +14,14 @@ dotenv.config();
 // });
 
 // Productio mode
-const redis = new Redis({
-    host: process.env.REDIS_HOST || '127.0.0.1',
-    port: parseInt(process.env.REDIS_PORT || '6379'),
-    username: process.env.REDIS_USER || '',
-    password: process.env.REDIS_PASSWORD || '',
-    tls: {}
-});
+// const redis = new Redis({
+//     host: process.env.REDIS_HOST || '127.0.0.1',
+//     port: parseInt(process.env.REDIS_PORT || '6379'),
+//     username: process.env.REDIS_USER || '',
+//     password: process.env.REDIS_PASSWORD || '',
+//     tls: {}
+// });
+const redis = new Redis(process.env.REDIS_URL || 'http://localhost:6379/');
 
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
