@@ -7,16 +7,24 @@ const { Client } = pg;
 
 dotenv.config();
 
-console.log(process.env.DATABASE_URL);
+// Dev mode
+// const redis = new Redis({
+//     host: process.env.REDIS_HOST || '127.0.0.1',
+//     port: parseInt(process.env.REDIS_PORT || '6379'),
+// });
 
+// Productio mode
 const redis = new Redis({
     host: process.env.REDIS_HOST || '127.0.0.1',
     port: parseInt(process.env.REDIS_PORT || '6379'),
+    username: process.env.REDIS_USER || '',
+    password: process.env.REDIS_PASSWORD || '',
+    tls: {}
 });
+
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
 });
-
 
 async function sendAirdropNotification(airdropDetails: string) {
     try {

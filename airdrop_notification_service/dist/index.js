@@ -18,11 +18,17 @@ const pg_1 = __importDefault(require("pg"));
 const mailer_1 = require("./mailer");
 const { Client } = pg_1.default;
 dotenv_1.default.config();
-console.log(process.env.DATABASE_URL);
 const redis = new ioredis_1.Redis({
     host: process.env.REDIS_HOST || '127.0.0.1',
     port: parseInt(process.env.REDIS_PORT || '6379'),
 });
+// const redis = new Redis({
+//     host: process.env.REDIS_HOST || '127.0.0.1',
+//     port: parseInt(process.env.REDIS_PORT || '6379'),
+//     username: process.env.REDIS_USER || '',
+//     password: process.env.REDIS_PASSWORD || '',
+//     tls: {}
+// });
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
 });
@@ -30,19 +36,10 @@ function sendAirdropNotification(airdropDetails) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { airdropId, followers } = JSON.parse(airdropDetails);
-            console.log("airdropId: ", airdropId);
-            console.log("followers: ", followers);
             // Get Airdrop details from the db using airdropId
-            // Add this before any database operations
-            // await db.connect().catch(err => {
-            //     console.error("Failed to connect to database:", err);
-            //     process.exit(1);
-            // });
             const queryText = `SELECT * FROM "Airdrop" WHERE id = $1`;
             const airdropResult = yield db.query(queryText, [airdropId]);
             const airdrop = airdropResult.rows[0];
-            // const airdropResult = await db.query(`SELECT * FROM "Airdrop" WHERE id = $1`, [airdropId]);
-            // const airdrop = airdropResult.rows[0];
             console.log("airdrop: ", airdropResult);
             if (!airdrop) {
                 return console.log("Can not send airdrop notification: Invalid airdropId");

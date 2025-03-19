@@ -90,7 +90,7 @@ function sendMail(_a) {
                         .cta-button {
                             display: inline-block;
                             background-color: #6a0dad;
-                            color: white;
+                            color: white !important;
                             text-decoration: none;
                             padding: 10px 20px;
                             border-radius: 5px;
