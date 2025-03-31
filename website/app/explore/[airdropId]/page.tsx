@@ -105,7 +105,7 @@ export default function AirdropDetails() {
           }
         }
   
-        const claimResponse = await axios.post('/api/airdrop/claim', { airdropId: airdropId, amount: amount, userPublicKey: wallet.publicKey });
+        const claimResponse = await axios.post('/api/airdrop/claim', { airdropId: airdropId, amount: amount, userPublicKey: wallet.publicKey }, { timeout: 60000});
   
         if (!claimResponse.data.success) {
           console.log("Can not claim airdrop: ", claimResponse.data.message);
