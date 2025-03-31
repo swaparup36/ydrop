@@ -11,6 +11,9 @@ const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379/');
 
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 async function sendAirdropNotification(airdropDetails: string) {

@@ -21,6 +21,9 @@ dotenv_1.default.config();
 const redis = new ioredis_1.Redis(process.env.REDIS_URL || 'redis://localhost:6379/');
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 function verifyApplication(application) {
     return __awaiter(this, void 0, void 0, function* () {
