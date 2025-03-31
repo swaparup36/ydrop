@@ -1,0 +1,40 @@
+name: Deploy to staging
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  redeploy_everything:
+    runs-on: ubuntu-latest
+    name: Deploying everything to staging
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: SSH Into Server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: 65.2.63.127
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd ydrop && git pull origin main
+            cd airdrop_notification_service/
+            npm install
+            npm run build
+            pm2 restart airdrop_notification_service
+            cd ..
+            cd transaction-reverting-workers/
+            npm install
+            npm run build
+            pm2 restart transaction-reverting-workers
+            cd ..
+            cd verification-workers/
+            npm install
+            npm run build
+            pm2 restart verification-workers
+
+        
