@@ -18,10 +18,7 @@ const { Client } = pg_1.default;
 const dotenv_1 = __importDefault(require("dotenv"));
 const axios_1 = __importDefault(require("axios"));
 dotenv_1.default.config();
-const client = new ioredis_1.Redis({
-    host: process.env.REDIS_HOST || '127.0.0.1',
-    port: parseInt(process.env.REDIS_PORT || '6379'),
-});
+const redis = new ioredis_1.Redis(process.env.REDIS_URL || 'redis://localhost:6379/');
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
 });
@@ -82,7 +79,7 @@ function startWorker() {
             console.log("Worker connected to Database.");
             while (true) {
                 try {
-                    const application = yield client.brpop("airdrop_applications", 0);
+                    const application = yield redis.brpop("airdrop_applications", 0);
                     console.log(application);
                     setTimeout(() => __awaiter(this, void 0, void 0, function* () {
                         // @ts-ignore

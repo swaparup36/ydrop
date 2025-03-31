@@ -9,10 +9,7 @@ const { decode } = pkg;
 
 const connection = new Connection(clusterApiUrl("devnet"));
  
-const redis = new Redis({
-    host: process.env.REDIS_HOST || '127.0.0.1',
-    port: parseInt(process.env.REDIS_PORT || '6379'),
-});
+const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379/');
 
 async function revertTransaction(credential: string) {
     try {

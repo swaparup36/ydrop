@@ -6,10 +6,8 @@ import axios from 'axios';
 
 dotenv.config();
 
-const client = new Redis({
-    host: process.env.REDIS_HOST || '127.0.0.1',
-    port: parseInt(process.env.REDIS_PORT || '6379'),
-});
+const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379/');
+
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
 });
@@ -78,7 +76,7 @@ async function startWorker() {
 
         while (true) {
             try {
-                const application = await client.brpop("airdrop_applications", 0);
+                const application = await redis.brpop("airdrop_applications", 0);
                 console.log(application);
                 
                 setTimeout(async() => {

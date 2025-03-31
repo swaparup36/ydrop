@@ -20,10 +20,7 @@ const spl_token_1 = require("@solana/spl-token");
 dotenv_1.default.config();
 const { decode } = bs58_1.default;
 const connection = new web3_js_1.Connection((0, web3_js_1.clusterApiUrl)("devnet"));
-const redis = new ioredis_1.Redis({
-    host: process.env.REDIS_HOST || '127.0.0.1',
-    port: parseInt(process.env.REDIS_PORT || '6379'),
-});
+const redis = new ioredis_1.Redis(process.env.REDIS_URL || 'redis://localhost:6379/');
 function revertTransaction(credential) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
