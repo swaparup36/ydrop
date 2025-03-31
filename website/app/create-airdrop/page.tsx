@@ -278,9 +278,9 @@ export default function CreateAirdrop() {
                                 onChange={handleOnChange}
                                 className={inputClasses}
                             >
-                                <option value="">Select a mode</option>
-                                <option value="subscriber">Subscriber</option>
-                                <option value="membership">Membership</option>
+                                <option className="bg-purple-900" value="">Select a mode</option>
+                                <option className="bg-purple-900" value="subscriber">Subscriber</option>
+                                <option className="bg-purple-900" value="membership">Membership</option>
                             </select>
                             {errors?.basedOn && <p className={errorClasses}>{errors.basedOn}</p>}
                         </div>
@@ -306,9 +306,9 @@ export default function CreateAirdrop() {
                                     }}
                                     className={inputClasses}
                                 >
-                                    <option value="">Select a Token</option>
+                                    <option className="bg-purple-900" value="">Select a Token</option>
                                     {tokenAccounts.map((tokenAccount, index) => (
-                                        <option key={index} value={tokenAccount.mint.toString()}>
+                                        <option className="bg-purple-900" key={index} value={tokenAccount.mint.toString()}>
                                             {tokenAccount.name}
                                         </option>
                                     ))}

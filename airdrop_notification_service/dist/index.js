@@ -18,19 +18,6 @@ const pg_1 = __importDefault(require("pg"));
 const mailer_1 = require("./mailer");
 const { Client } = pg_1.default;
 dotenv_1.default.config();
-// Dev mode
-// const redis = new Redis({
-//     host: process.env.REDIS_HOST || '127.0.0.1',
-//     port: parseInt(process.env.REDIS_PORT || '6379'),
-// });
-// Productio mode
-// const redis = new Redis({
-//     host: process.env.REDIS_HOST || '127.0.0.1',
-//     port: parseInt(process.env.REDIS_PORT || '6379'),
-//     username: process.env.REDIS_USER || '',
-//     password: process.env.REDIS_PASSWORD || '',
-//     tls: {}
-// });
 const redis = new ioredis_1.Redis(process.env.REDIS_URL || 'redis://localhost:6379/');
 const db = new Client({
     connectionString: process.env.DATABASE_URL,
