@@ -116,7 +116,7 @@ export async function sendMail({
                             <p><span class="highlight">Based On:</span> ${airdropDetail.basedOn}</p>
                             <p><span class="highlight">Total Amount:</span> ${airdropDetail.amount} ${airdropDetail.tokenName}</p>
                             <p><span class="highlight">Token Mint Address:</span> ${airdropDetail.tokenMint}</p>
-                            <a href="https://ydrop.com/airdrop/${airdropDetail.id}" class="cta-button">Claim Airdrop</a>
+                            <a href="https://ydrop.vercel.app/explore/${airdropDetail.id}" class="cta-button">Claim Airdrop</a>
                         </div>
                         <div class="footer">
                             <p>You're receiving this email because you follow ${airdropDetail.creatorName} on Ydrop.</p>

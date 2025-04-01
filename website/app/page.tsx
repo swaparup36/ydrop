@@ -68,7 +68,7 @@ function Home() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-[#0F0817] to-[#1A1033] text-white overflow-hidden">
         {/* Hero Section */}
-        <div className="container mx-auto px-14 pt-20 pb-32">
+        <div className="container mx-auto px-6 md:px-14 pt-6 md:pt-20 md:pb-32 pb-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div 
               className="space-y-8"
@@ -98,11 +98,11 @@ function Home() {
                 className="flex flex-wrap gap-4"
                 variants={fadeIn}
               >
-                <Button variant='primary' onClick={() => router.push('/create-airdrop')}>
+                <Button variant='primary' className='w-full md:w-fit' onClick={() => router.push('/create-airdrop')}>
                   Create Airdrop
                   <FaParachuteBox className="w-5 h-5" />
                 </Button>
-                <Button variant='secondary' onClick={() => router.push('/explore')}>
+                <Button variant='secondary' className='w-full md:w-fit' onClick={() => router.push('/explore')}>
                   Explore Drops
                 </Button>
               </motion.div>
@@ -119,7 +119,7 @@ function Home() {
             </motion.div>
 
             <motion.div 
-              className="relative"
+              className="relative hidden md:block"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
@@ -158,7 +158,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="container mx-auto px-16 pb-32">
+        <div className="container mx-auto px-6 md:px-16 pb-32">
           <motion.div
             initial="hidden"
             whileInView="visible"
