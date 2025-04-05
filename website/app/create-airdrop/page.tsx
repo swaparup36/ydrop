@@ -229,7 +229,7 @@ export default function CreateAirdrop() {
                                     if (file) {
                                         const fileSize = file.size / 1024 / 1024;
 
-                                        if (fileSize > 5) return;
+                                        if (fileSize > 5) return alert("file size should be less than 5mb");
 
                                         const fileUrl = URL.createObjectURL(file);
                                         setCoverPicturePreviewURL(fileUrl);

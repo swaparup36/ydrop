@@ -8,7 +8,7 @@ export const createAirdropSchema = z.object({
     description: z
         .string()
         .min(2, 'description name must be at least 2 characters')
-        .max(50, 'description name must be less than 2000 characters'),
+        .max(2000, 'description name must be less than 2000 characters'),
     tokenMint: z
         .string(),
     tokenDecimal: z
