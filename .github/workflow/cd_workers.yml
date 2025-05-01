@@ -16,7 +16,7 @@ jobs:
       - name: SSH Into Server
         uses: appleboy/ssh-action@v1
         with:
-          host: 65.2.63.127
+          host: 65.2.71.101
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           port: 22

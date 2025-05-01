@@ -116,21 +116,21 @@ function Footer() {
                         <ul className="space-y-3">
                             <li>
                                 <Link
-                                    href="#"
+                                    href="/privacy-policy"
                                     className="text-gray-400 hover:text-purple-400 transition"
                                 >
-                                Help & Support
+                                Privacy Policy
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href="#"
+                                    href="/terms-of-service"
                                     className="text-gray-400 hover:text-purple-400 transition"
                                 >
-                                Item Details
+                                Terms of Service
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link
                                     href="#"
                                     className="text-gray-400 hover:text-purple-400 transition"
@@ -145,7 +145,7 @@ function Footer() {
                                 >
                                 Collection
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </motion.div>
 
